@@ -1,0 +1,86 @@
+/* Importar el CSS base para las barras superior e inferior */
+@import "home2";
+
+/* Contenedor de Productos */
+.products-container {
+    width: 90%;
+    padding: 20px;
+    background-color: #F9F5E8; /* Beige claro */
+    border-radius: 10px;
+    border: 2px solid #EDE5CC; /* Borde beige */
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Título de la sección de productos */
+.products-container h2 {
+    font-size: 1.8em;
+    color: #8C705F; /* Marrón suave */
+    margin-bottom: 20px;
+}
+
+/* Estilos de la cuadrícula de productos */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Tarjeta de producto */
+.product-card {
+    background-color: #FAF5E4; /* Fondo beige claro */
+    border: 1px solid #D5C594; /* Borde beige más oscuro */
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Estilo del título en la tarjeta de producto */
+.product-card h3 {
+    font-size: 1.2em;
+    color: #8C705F; /* Marrón suave */
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.product-card h3 a:hover {
+    color: #6E5032; /* Marrón más oscuro al pasar el cursor */
+}
+
+/* Estilo de la imagen de marcador de posición */
+.product-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #EAE1C5; /* Beige neutro */
+    border: 1px dashed #D8C99B; /* Beige más marcado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6E5032; /* Marrón oscuro */
+    margin-bottom: 10px;
+}
+
+/* Estilos para detalles adicionales */
+.product-card p {
+    font-size: 1em;
+    color: #6E5032; /* Marrón suave */
+    margin: 5px 0;
+}
+
+/* Botón Ver detalles */
+.view-details-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #D8C99B; /* Beige dorado */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.view-details-button:hover {
+    background-color: #C6A883; /* Beige más oscuro */
+}

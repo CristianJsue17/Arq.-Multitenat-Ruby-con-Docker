@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  *= require home
+ *= require home2
  *= require products
- 
+ *= require products2
  */
  

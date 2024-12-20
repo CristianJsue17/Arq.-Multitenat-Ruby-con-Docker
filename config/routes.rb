@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "products_upload/:id/edit", to: "products_upload#edit", as: :edit_products_upload
   patch "products_upload/:id", to: "products_upload#update", as: :update_products_upload
 
+  # Rutas de carrito y orden
   resource :carts, only: [:show, :create, :destroy]
   resource :orders, only: [:create]
 
@@ -19,12 +20,26 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
 
   # Ruta principal
-  get "home/index"
-  root "home#index"
+  #root "home#index"
 
-  # Rutas para categorías
+  constraints subdomain: "compufiis" do #rama principal compuffis
+    root "home#compufiis", as: :compufiis_root
+  end
+
+  constraints subdomain: "mueblesofi" do #rama principal muebles
+    root "home#mueblesofi", as: :mueblesofi_root
+  end
+
+  # Rutas para categorías compufiis
   get "category/laptops", to: "products#laptops", as: :laptops
   get "category/computadoras", to: "products#computadoras", as: :computadoras
   get "category/celulares", to: "products#celulares", as: :celulares
   get "category/accesorios", to: "products#accesorios", as: :accesorios
+
+  # Rutas específicas para mueblesofi
+  get "category/escritorios", to: "products#escritorios", as: :muebles
+  get "category/sillas", to: "products#sillas", as: :sillas
+  get "category/armarios", to: "products#armarios", as: :armarios
+
+
 end

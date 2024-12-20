@@ -18,5 +18,11 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.eager_load_paths << Rails.root.join("app/middleware")
+    
+    require Rails.root.join("app/middleware/tenant_middleware")
+    config.middleware.use TenantMiddleware
+
   end
 end

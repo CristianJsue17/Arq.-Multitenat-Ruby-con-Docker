@@ -1,8 +1,9 @@
-# app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
   helper_method :authenticate_user!
   helper_method :current_user
+  helper_method :current_tenant
 
+  before_action :set_current_tenant
   before_action :initialize_cart
 
   def authenticate_user!
@@ -12,7 +13,19 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    @current_user ||= User.for_current_tenant.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def current_tenant
+    @current_tenant
+  end
+
+  private
+
+  def set_current_tenant
+    subdomain = request.subdomain
+    @current_tenant = Tenant.find_by(subdomain: subdomain)
+    Tenant.current = @current_tenant
   end
 
   def initialize_cart

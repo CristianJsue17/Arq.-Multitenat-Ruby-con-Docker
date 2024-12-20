@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MueblesOfi - <%= @products.first&.category&.capitalize || "Productos" %></title>
+  <%= stylesheet_link_tag "category2", media: "all" %>
+</head>
+<body>
+  <!-- Barra de bienvenida -->
+  <div class="welcome-bar">
+    ¡Bienvenidos a MueblesOfi, calidad y confort para tu hogar y oficina!
+  </div>
+
+  <!-- Barra de navegación principal -->
+  <header>
+    <div class="navbar">
+      <!-- Logo -->
+      <div class="logo-circle">
+        <%= link_to mueblesofi_root_path do %>
+          <%= image_tag 'logoMueble.PNG', alt: 'Logo MueblesOfi', class: 'logo-img' %>
+        <% end %>
+      </div>
+      <nav>
+        <a href="<%= muebles_path %>">Escritorios</a>
+        <a href="<%= sillas_path %>">Sillas</a>
+        <a href="<%= armarios_path %>">Armarios</a>
+      </nav>
+      <div class="icons">
+        <a href="#" class="cart-icon" title="Carrito de Compras">
+          <span class="cart">&#128722;</span>
+        </a>
+        <a href="<%= login_path %>" class="login-icon" title="Login Usuario">
+          <span class="login">&#128100;</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor de Productos -->
+  <div class="products-container">
+    <h2><%= @products.first&.category&.capitalize || "Productos" %></h2>
+    <div class="product-grid">
+      <% @products.each do |product| %>
+        <div class="product-card">
+          <h3><%= link_to product.name, product_path(product) %></h3>
+          <% if product.image.attached? %>
+            <%= link_to image_tag(product.image, alt: "Imagen de #{product.name}", class: "product-image"), product_path(product) %>
+          <% else %>
+            <div class="product-image-placeholder">(Imagen no disponible)</div>
+          <% end %>
+          <p><strong>Descripción:</strong> <%= product.description %></p>
+          <p><strong>Precio:</strong> <%= number_to_currency(product.price) %></p>
+          <p><strong>Marca:</strong> <%= product.brand %></p>
+          <p><strong>Stock:</strong> <%= product.stock %></p>
+
+          <!-- Enlace para ver más detalles -->
+          <% if product.id.present? %>
+            <%= link_to "Ver detalles", product_path(product), class: "view-details-button" %>
+          <% else %>
+            <p class="no-details">Detalles no disponibles</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="company-info">
+      <p>Todos los derechos reservados © 2024 MueblesOfi</p>
+      <p>Contacto: contacto@mueblesofi.com | Teléfono: +51 987 654 321</p>
+    </div>
+  </footer>
+</body>
+</html>

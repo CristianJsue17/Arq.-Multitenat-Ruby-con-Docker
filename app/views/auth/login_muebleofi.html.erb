@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <style>
+      /* Estilos para el formulario de inicio de sesión */
+      body {
+        background: linear-gradient(135deg, #f4e3d7, #d8bca7);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+      }
+
+      .login-container {
+        max-width: 400px;
+        width: 100%;
+        padding: 20px;
+        margin: auto;
+      }
+
+      .login-card {
+        background: #e8d5c1;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        color: #5a4835;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 25px;
+        color: #5a4835;
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      .input-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #7d6a5c;
+        font-weight: bold;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #c1a894;
+        font-size: 15px;
+        background-color: #f9f4ef;
+        color: #5a4835;
+      }
+
+      .input-field::placeholder {
+        color: #b8a29a;
+      }
+
+      .password-container {
+        position: relative;
+      }
+
+      .password-input {
+        width: 100%;
+        padding-right: 40px;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        color: #7d6a5c;
+      }
+
+      .login-button {
+        width: 100%;
+        padding: 14px;
+        background-color: #b39073;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .login-button:hover {
+        background-color: #c3a283;
+      }
+
+      .link-group {
+        margin-top: 20px;
+      }
+
+      .back-link {
+        color: #a07658;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+        color: #c3a283;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-card">
+        <h2>Iniciar Sesión</h2>
+        <form action="/login" method="post" class="login-form">
+          <div class="input-group">
+            <label for="username" class="input-label">Usuario</label>
+            <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" class="input-field" required>
+          </div>
+
+          <div class="input-group">
+            <label for="password" class="input-label">Contraseña</label>
+            <div class="password-container">
+              <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" class="input-field password-input" required>
+              <button type="button" class="toggle-password" onclick="togglePassword()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M15 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z" />
+                  <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.269 2.943 9.542 7-.707 2.066-2.17 3.787-4.01 4.722L15.07 12l2.462-2.458C17.548 8.66 14.89 7 12 7c-2.89 0-5.548 1.66-6.532 3.542L5.93 12 3.468 9.542A10.027 10.027 0 002.458 12z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="login-button">Iniciar sesión</button>
+        </form>
+        <div class="link-group">
+          <a href="/" class="back-link">Volver a inicio</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const passwordToggle = document.querySelector('.toggle-password');
+
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          passwordToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3.59 3.59l17.82 17.82-1.42 1.42L3.59 5.01 1.98 3.6l1.41-1.42zm10.25 1.42a8.968 8.968 0 015.42 1.82L17.1 8.1C15.566 6.912 13.812 6 12 6c-3.038 0-5.78 1.713-7.267 4.308L2.69 8.706A10.019 10.019 0 0112 4.01c1.397 0 2.733.257 4.02.752L13.84 9.95 9.48 5.59l-1.41 1.42L13.84 14.8l1.42-1.42-4.18-4.17 5.72 5.72-3.8-3.79z"/></svg>';
+        } else {
+          passwordInput.type = 'password';
+          passwordToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.269 2.943 9.542 7-.707 2.066-2.17 3.787-4.01 4.722L15.07 12l2.462-2.458C17.548 8.66 14.89 7 12 7c-2.89 0-5.548 1.66-6.532 3.542L5.93 12 3.468 9.542A10.027 10.027 0 002.458 12z"/></svg>';
+        }
+      }
+    </script>
+  </body>
+</html>

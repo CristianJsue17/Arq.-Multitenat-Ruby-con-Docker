@@ -1,0 +1,235 @@
+/* Estilos generales */
+body {
+    background-color: #f7f2e8; /* Fondo beige claro */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1, h2, h3 {
+    color: #5c5147; /* Marrón oscuro para los títulos */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  /* Contenedor del formulario */
+  .form-container {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    background-color: #faf4eb; /* Fondo beige suave */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .form-container h1 {
+    margin-bottom: 10px;
+  }
+  
+  .form-container div {
+    margin-bottom: 15px;
+  }
+  
+  .form-container label {
+    font-weight: 600;
+    color: #5c5147; /* Marrón oscuro */
+  }
+  
+  /* Campos de entrada y selección */
+  .form-container input[type="text"],
+  .form-container input[type="number"],
+  .form-container textarea,
+  .form-container select,
+  .form-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1c7b9;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-container input[type="text"]:focus,
+  .form-container input[type="number"]:focus,
+  .form-container textarea:focus,
+  .form-container select:focus,
+  .form-container input[type="file"]:focus {
+    border-color: #b7996e; /* Beige dorado */
+    box-shadow: 0 0 5px rgba(183, 153, 110, 0.4);
+  }
+  
+  .form-container textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* Botón de envío */
+  .form-container input[type="submit"] {
+    width: 100%;
+    background-color: #b7996e; /* Beige dorado */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-container input[type="submit"]:hover {
+    background-color: #a3805e; /* Beige más oscuro */
+  }
+  
+  /* Enlaces de navegación */
+  .nav-links {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .nav-links a {
+    color: #b7996e;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Sección de productos subidos */
+  .products-section {
+    margin-top: 30px;
+  }
+  
+  .products-section h2 {
+    border-bottom: 2px solid #b7996e;
+    padding-bottom: 10px;
+  }
+  
+  /* Barras de categoría */
+  .category-header {
+    background-color: #e6d7c3; /* Beige claro */
+    color: #5c5147;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  /* Contenedor para productos en una cuadrícula de 2 columnas */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  /* Contenedor de cada producto (cuadro) */
+  .product-item {
+    list-style-type: none;
+    padding: 15px;
+    background-color: #f0e7da; /* Beige suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* Selector específico para el contenedor de los botones de acción dentro de cada producto */
+  .product-item > div:last-child {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Ajuste de imagen */
+  .product-item img {
+    width: 180px;
+    height: 100px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  /* Estilo para el espacio reservado de la imagen */
+  .image-placeholder {
+    width: 180px;
+    height: 100px;
+    background-color: #e6d7c3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-right: 15px;
+  }
+  
+  .product-details {
+    flex-grow: 1;
+  }
+  
+  .product-details p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  /* Botón de Editar */
+  .edit-link {
+    color: #b7996e;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid #b7996e;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    margin-right: 10px;
+  }
+  
+  .edit-link:hover {
+    background-color: #b7996e;
+    color: #fff;
+  }
+  
+  /* Botón de Eliminar */
+  .delete-button {
+    color: #e74c3c;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid #e74c3c;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .delete-button:hover {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  /* Contenedor de la imagen para alineación sin alterar tamaño */
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Mantener tamaño predeterminado de la imagen y espacio reservado */
+  .product-item img {
+    width: 180px;
+    height: 100px;
+  }
+  
+  .image-placeholder {
+    width: 180px;
+    height: 100px;
+    background-color: #e6d7c3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  

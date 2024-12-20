@@ -10,12 +10,13 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME") %>
+  database: multitenant_development
 
 test:
   <<: *default
-  database: compufiis_test
+  database: multitenant_test
 
 production:
   <<: *default
-  database: compufiis_production
+  database: multitenant_production
+

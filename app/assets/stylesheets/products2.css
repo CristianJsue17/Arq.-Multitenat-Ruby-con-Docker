@@ -1,0 +1,18 @@
+/* Jala de manera global de application.css*/
+
+/* Estilo de la imagen de marcador de posición */
+.main-product-image {
+    background-color: #f5f5dc; /* Beige */
+    color: #5d4037; /* Marrón oscuro */
+  }
+  
+  /* Botón "Añadir al Carrito" */
+  .add-to-cart {
+    background-color: #8d6e63; /* Marrón medio */
+    color: #fff;
+  }
+  
+  .add-to-cart:hover {
+    background-color: #6d4c41; /* Marrón oscuro */
+  }
+  

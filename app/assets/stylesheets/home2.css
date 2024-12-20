@@ -1,0 +1,204 @@
+/* Barra de bienvenida */
+.welcome-bar {
+    text-align: center;
+    padding: 8px;
+    background: linear-gradient(
+      90deg,
+      #F0E9D3,
+      #EDE5CC
+    ); /* Degradado beige */
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: #5D4C3C; /* Marrón suave */
+  }
+  
+  /* Barra de navegación principal */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: linear-gradient(
+      90deg,
+      #DBD2A2,
+      #D8C99B
+    ); /* Degradado beige oscuro */
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Logo en forma circular */
+  .logo-circle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .logo-circle span {
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
+    color: #5D4C3C; /* Marrón suave */
+  }
+  
+  /* Navegación principal */
+  .navbar nav a {
+    margin: 0 1em;
+    text-decoration: none;
+    color: #5D4C3C; /* Marrón */
+    font-weight: bold;
+    font-size: 1.4em;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Iconos de carrito y login */
+  .icons {
+    display: flex;
+    gap: 1em;
+  }
+  
+  .cart-icon,
+  .login-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D2C18D; /* Beige oscuro */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: #5D4C3C;
+    font-size: 1.4em;
+    border: 2px solid #EAE1C5; /* Beige claro */
+  }
+  
+  .cart-icon:hover,
+  .login-icon:hover {
+    background-color: #C9B578; /* Tono más oscuro en hover */
+  }
+  
+  /* Contenedor Principal */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Contenedor de Imagen */
+  .image-container {
+    width: 90%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+  }
+  
+  .image-container h2 {
+    color: #C6B171; /* Beige fuerte */
+    font-size: 2em;
+    margin-top: -20px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Contenedor de Productos */
+  .products-container {
+    width: 90%;
+    padding: 20px;
+    background-color: #F3EDDA; /* Beige claro */
+    border-radius: 10px;
+    border: 2px solid #E4D9B7;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .products-message {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #5D4C3C;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    padding: 2em 0;
+  }
+  
+  /* Tarjeta de producto */
+  .product-card {
+    border: none;
+    padding: 1em;
+    text-align: center;
+    background-color: #FFFDF6; /* Fondo beige muy claro */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border-top: 4px solid #D8C99B;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+  }
+  
+  .product-card h3 {
+    font-size: 1.3em;
+    color: #C6B171;
+  }
+  
+  .product-card p {
+    font-size: 1em;
+    color: #5D4C3C;
+    margin: 5px 0;
+  }
+  
+  /* Footer */
+  footer .company-info {
+    text-align: center;
+    padding: 20px;
+    background-color: #DED1A9;
+    font-size: 1em;
+    color: #5D4C3C;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  footer .company-info a {
+    text-decoration: none;
+    color: #D8C99B;
+  }
+  
+  footer .company-info a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,112 @@
+<%= stylesheet_link_tag 'home2', media: 'all' %>
+<!-- Barra de bienvenida superior -->
+<div class="welcome-bar" style="background-color: #6e5032; color: white;">
+  Bienvenidos a MueblesOfi, calidad y confort para tu hogar y oficina!
+</div>
+
+<!-- Barra de navegación principal -->
+<header>
+  <div class="navbar">
+    <!-- Logo en forma circular con texto MUEBLESOFI al lado -->
+    <div class="logo-circle">
+      <%= link_to image_tag('logoMueble.PNG', alt: 'Logo MueblesOFI',
+        class: 'logo-img'), mueblesofi_root_path %>
+      <span>MUEBLESOFI</span>
+    </div>
+
+    <!-- Navegación principal -->
+    <nav>
+      <a href="<%= muebles_path %>">Escritorios</a>
+      <a href="<%= sillas_path %>">Sillas</a>
+      <a href="<%= armarios_path %>">Armarios</a>
+      
+    </nav>
+
+    <!-- Iconos de Carrito de Compras y Login -->
+    <div class="icons">
+      <div class="cart-icon" title="Carrito de Compras">
+        <div class="cart-circle">
+          <span class="cart">&#128722;</span>
+        </div>
+      </div>
+      <%= link_to login_path, class: "login-icon", title: "Login Usuario" do %>
+        <div class="login-circle">
+          <span class="login">&#128100;</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
+
+<!-- Contenedor Principal -->
+<div class="main-container">
+  <!-- Contenedor de Imagen -->
+  <div class="image-container">
+    <%= image_tag 'mueble1.avif', alt: 'Bienvenido a MueblesOfi' %>
+    <h2>¡Lo que tu espacio necesita!</h2>
+  </div>
+
+  <!-- Contenedor de Productos -->
+  <div class="products-container">
+    <div class="product-grid">
+      <!-- Tarjeta de Producto: Escritorio -->
+      <div class="product-card">
+        <h3><%= @random_computers[0]&.name || "Escritorio Moderno" %></h3>
+        <% if @random_computers[0]&.image&.attached? %>
+          <%= image_tag @random_computers[0].image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Imagen no disponible)</div>
+        <% end %>
+        <p>Precio: <%= @random_computers[0]&.price || "N/A" %></p>
+        <p>Marca: <%= @random_computers[0]&.brand || "Marca" %></p>
+        <p>Stock: <%= @random_computers[0]&.stock || "Stock" %></p>
+        <% if @random_computers[0]&.id.present? %>
+            <%= link_to 'Ver detalles', product_path(@random_computers[0]), class: 'details-link' %>
+        <% else %>
+            <p>Detalles no disponibles</p>
+        <% end %>
+
+      </div>
+
+      <!-- Tarjeta de Producto: Silla -->
+      <div class="product-card">
+        <h3><%= @random_laptops[0]&.name || "Silla Ergonómica" %></h3>
+        <% if @random_laptops[0]&.image&.attached? %>
+          <%= image_tag @random_laptops[0].image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Imagen no disponible)</div>
+        <% end %>
+        <p>Precio: <%= @random_laptops[0]&.price || "N/A" %></p>
+        <p>Marca: <%= @random_laptops[0]&.brand || "Marca" %></p>
+        <%= link_to 'Ver detalles', product_path(@random_laptops[0]), class: 'details-link' %>
+      </div>
+
+      <!-- Tarjeta de Producto: Armario -->
+      <div class="product-card">
+        <h3><%= @random_cellphones[0]&.name || "Armario Multiusos" %></h3>
+        <% if @random_cellphones[0]&.image&.attached? %>
+          <%= image_tag @random_cellphones[0].image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Imagen no disponible)</div>
+        <% end %>
+        <p>Precio: <%= @random_cellphones[0]&.price || "N/A" %></p>
+        <p>Marca: <%= @random_cellphones[0]&.brand || "Marca" %></p>
+        <%= link_to 'Ver detalles', product_path(@random_cellphones[0]), class: 'details-link' %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje final -->
+  <p class="products-message">¡Visita nuestra colección completa en las categorías de arriba!</p>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="company-info">
+    <p>Todos los derechos reservados © 2024 MueblesOfi</p>
+    <p>Contacto: contacto@mueblesofi.com | Teléfono: +51 987 654 321</p>
+  </div>
+</footer>
+
+<!-- Carrito deslizante -->
+<%= render partial: 'carts/cart' %>

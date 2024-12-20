@@ -1,0 +1,208 @@
+<%= stylesheet_link_tag 'home', media: 'all' %>
+<!-- Barra de bienvenida superior -->
+<div class="welcome-bar">
+  Bienvenidos a CompuFIIS, mejores marcas a precio locura!
+</div>
+<div>
+
+<!-- Barra de navegación principal -->
+<header>
+  <div class="navbar">
+    <!-- Logo en forma circular con texto COMPUFIIS al lado -->
+    <div class="logo-circle">
+      <%= link_to image_tag('logoCompufiis.png', alt: 'Logo CompuFIIS',
+    class: 'logo-img'), compufiis_root_path %>
+      <span>COMPUFIIS</span>
+    </div>
+
+    <!-- Navegación principal -->
+    <nav>
+      <a href="<%= laptops_path %>">Laptops</a>
+      <a href="<%= computadoras_path %>">Computadoras</a>
+      <a href="<%= celulares_path %>">Celulares</a>
+      <a href="<%= accesorios_path %>">Accesorios</a>
+    </nav>
+
+    <!-- Iconos de Carrito de Compras y Login -->
+    <div class="icons">
+      <div class="cart-icon" title="Carrito de Compras">
+        <div class="cart-circle">
+          <span class="cart">&#128722;</span>
+        </div>
+      </div>
+      <%= link_to login_path, class: "login-icon", title: "Login Usuario" do
+          %>
+      <div class="login-circle">
+        <span class="login">&#128100;</span>
+      </div>
+    <% end %>
+  </div>
+</div>
+</header>
+
+<!-- Contenedor Principal -->
+<div class="main-container">
+  <!-- Contenedor de Imagen -->
+  <div class="image-container">
+    <%= image_tag 'foto4.webp', alt: 'Bienvenido a CompuFIIS' %>
+    <h2>Esto te puede interesar!</h2>
+  </div>
+
+  <!-- Contenedor de Productos -->
+  <div class="products-container">
+    <div class="product-grid">
+      <!-- Tarjeta de Producto de Laptop -->
+      <div class="product-card">
+        <h3><%= @random_laptops[0]&.name || "Nombre Laptop" %></h3>
+        <% if @random_laptops[0]&.image&.attached? %>
+          <%= image_tag @random_laptops[0].image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Foto del producto)</div>
+        <% end %>
+        <p>Precio: <%= @random_laptops[0]&.price || "Precio" %></p>
+        <p>Marca: <%= @random_laptops[0]&.brand || "Marca" %></p>
+        <p>Stock: <%= @random_laptops[0]&.stock || "#Stock" %></p>
+
+        <% if @random_laptops[0].present? && @random_laptops[0].id.present? %>
+          <%= link_to 'Ver detalles', product_path(@random_laptops[0]), class: 'details-link' %>
+        <% end %>
+      </div>
+
+      <!-- Tarjeta de Producto de Computadora -->
+      <div class="product-card">
+        <h3><%= @random_computers&.name || "Nombre PC" %></h3>
+        <% if @random_computers.present? && @random_computers.image&.attached? %>
+          <%= image_tag @random_computers.image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Foto del producto)</div>
+        <% end %>
+
+        <p>Precio: <%= @random_computers&.price || "Precio" %></p>
+        <p>Marca: <%= @random_computers&.brand || "Marca" %></p>
+        <p>Stock: <%= @random_computers&.stock || "#Stock" %></p>
+        <% if @random_computers.present? && @random_computers.id.present? %>
+          <%= link_to 'Ver detalles', product_path(@random_computers), class: 'details-link' %>
+        <% else %>
+          <p>Detalles no disponibles</p>
+        <% end %>
+      </div>
+
+      <!-- Tarjeta de Producto de Celular -->
+      <div class="product-card">
+        <h3><%= @random_cellphones[0]&.name || "Nombre Celular" %></h3>
+
+        <% if @random_cellphones[0].present? &&  @random_cellphones[0].image&.attached? %>
+          <%= image_tag @random_cellphones[0].image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Foto del producto)</div>
+        <% end %>
+
+        <p>Precio: <%= @random_cellphones[0]&.price || "Precio" %></p>
+        <p>Marca: <%= @random_cellphones[0]&.brand || "Marca" %></p>
+        <p>Stock: <%= @random_cellphones[0]&.stock || "#Stock" %></p>
+
+        <% if @random_cellphones[0].present? &&
+            @random_cellphones[0].id.present? %> <%= link_to 'Ver detalles',
+            product_path(@random_cellphones[0]), class: 'details-link' %> <%
+            else %>
+          <p>Detalles no disponibles</p>
+        <% end %>
+      </div>
+
+      <!-- Segunda tarjeta de Laptop -->
+      <div class="product-card">
+        <h3><%= @random_laptops[1]&.name || "Nombre Laptop" %></h3>
+        <% if @random_laptops[1].present? && @random_laptops[1].image&.attached? %>
+          <%= image_tag @random_laptops[1].image, class: "product-image" %> <% else %>
+          <div class="product-image-placeholder">(Foto del producto)</div>
+        <% end %>
+
+        <p>Precio: <%= @random_laptops[1]&.price || "Precio" %></p>
+        <p>Marca: <%= @random_laptops[1]&.brand || "Marca" %></p>
+        <p>Stock: <%= @random_laptops[1]&.stock || "#Stock" %></p>
+
+        <% if @random_laptops[0].present? && @random_laptops[0].id.present? %>
+          <%= link_to 'Ver detalles', product_path(@random_laptops[0]), class: 'details-link' %>
+        <% end %>
+      </div>
+
+      <!-- Segunda tarjeta de Celular -->
+      <div class="product-card">
+        <h3><%= @random_cellphones[1]&.name || "Nombre Celular" %></h3>
+        <% if @random_cellphones[1].present? &&  @random_cellphones[1].image&.attached? %>
+          <%= image_tag @random_cellphones[1].image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Foto del producto)</div>
+        <% end %>
+
+        <p>Precio: <%= @random_cellphones[1]&.price || "Precio" %></p>
+        <p>Marca: <%= @random_cellphones[1]&.brand || "Marca" %></p>
+        <p>Stock: <%= @random_cellphones[1]&.stock || "#Stock" %></p>
+        <%= link_to 'Ver detalles', product_path(@random_cellphones[1].id),
+            class: 'details-link' if @random_cellphones[1]&.id.present? %>
+      </div>
+
+      <!-- Tarjeta adicional para Accesorio -->
+      <div class="product-card">
+        <h3><%= @random_accessory&.name || "Nombre Accesorio" %></h3>
+        <% if @random_accessory&.image&.attached? %>
+          <%= image_tag @random_accessory.image, class: "product-image" %>
+        <% else %>
+          <div class="product-image-placeholder">(Foto del producto)</div>
+        <% end %>
+        <p>Precio: <%= @random_accessory&.price || "Precio" %></p>
+        <p>Marca: <%= @random_accessory&.brand || "Marca" %></p>
+        <p>Stock: <%= @random_accessory&.stock || "#Stock" %></p>
+        <%= link_to 'Ver detalles', product_path(@random_accessory.id), class: 'details-link' if @random_accessory&.id.present? %>
+      </div>
+    </div>
+
+    <!-- Mensaje debajo de los productos -->
+    <p class="products-message">
+      Mira el catálogo completo en la parte superior
+    </p>
+  </div>
+
+  <!-- Segundo Contenedor de Imagen -->
+  <div class="secondary-image-container">
+    <%= image_tag 'foto2.avif', alt: 'Imagen adicional de CompuFIIS' %>
+  </div>
+
+  <!-- Contenedor de Información Adicional -->
+  <div class="about-compufiis-container">
+    <h2>Sobre CompuFIIS</h2>
+    <p>
+      CompuFIIS es una tienda especializada en tecnología, ofreciendo
+      productos de alta calidad a precios accesibles.
+    </p>
+    <div class="info-sections">
+      <div class="info-box">
+        <h3>CompuFIIS en Perú</h3>
+        <p>
+          Presencia en todo el país, con soporte técnico especializado y
+          rápido. Más de 10,000 clientes satisfechos.
+        </p>
+      </div>
+      <div class="info-box">
+        <h3>CompuFIIS en Latinoamérica</h3>
+        <p>
+          Estamos trabajando para expandir nuestra cobertura en varios
+          países de la región, brindando soporte y calidad en cada venta.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Información de la Empresa -->
+<footer>
+  <div class="company-info">
+    <p>Todos los derechos reservados © 2024 CompuFiss</p>
+    <p>Contacto: correo@compufiis.com | Teléfono: +51 123 456 789</p>
+    <a href="/privacy-policy">Política de Privacidad</a> |
+    <a href="/terms">Términos de Servicio</a>
+  </div>
+</footer>
+
+<!-- Carrito deslizante -->
+<%= render partial: 'carts/cart' %>

@@ -8,7 +8,7 @@ body {
   
   
   h1, h2, h3 {
-    color: #ffffff; /* Color blanco para que resalte sobre el fondo azul */
+    color: #333333; /* Color blanco para que resalte sobre el fondo azul */
     font-weight: bold;
     text-align: center;
     margin-top: 0;

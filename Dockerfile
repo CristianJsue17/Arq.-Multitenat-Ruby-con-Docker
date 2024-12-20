@@ -5,8 +5,8 @@ FROM ruby:3.3.6
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 
 # Configura el usuario de Git (opcional)
-RUN git config --global user.name "tu_usuario"
-RUN git config --global user.email "tu_correo"
+RUN git config --global user.name ""
+RUN git config --global user.email ""
 
 # Configura el directorio de trabajo
 WORKDIR /usr/src/app
@@ -40,5 +40,5 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 # 8. Permisos git en proyecto
 #   sudo chown -R $(whoami):$(whoami) .
 
-#   docker exec -it proyecto_ruby_arq-web-1 bash
-#   docker exec -it proyecto_ruby_arq-db-1 bash
+#   docker exec -it web_multitenant bash
+#   docker exec -it db_multitenant bash

@@ -1,41 +1,43 @@
 version: '3'
 services:
   # Servicio de base de datos PostgreSQL
-  db:
+  db_multitenant:
     image: postgres:13
+    container_name: db_multitenant
     environment:
-      POSTGRES_USER: cristian       # Usuario de PostgreSQL
-      POSTGRES_PASSWORD: cristian   # Contraseña de PostgreSQL
-      POSTGRES_DB: compufiis_development # Nombre de la base de datos
+      POSTGRES_USER: cristian
+      POSTGRES_PASSWORD: cristian
+      POSTGRES_DB: multitenant_development
     ports:
-      - "5433:5432"                 # Puerto expuesto para acceder a PostgreSQL (5433) desde el host
+      - "5434:5432"                 # Cambié el puerto para evitar conflictos
     volumes:
-      - pgdata:/var/lib/postgresql/data # Volumen para persistencia de datos
+      - pgdata_multitenant:/var/lib/postgresql/data
     networks:
-      - app-network                 # Red compartida con el servicio de Rails
+      - multitenant-network
 
   # Servicio de aplicación web Rails
-  web:
-    build: .                        # Construye la imagen usando el Dockerfile en la raíz del proyecto
+  web_multitenant:
+    build: .                        # Construye la imagen usando el Dockerfile actual
+    container_name: web_multitenant
     command: bash -c "rm -f tmp/pids/server.pid && rails server -b '0.0.0.0'"
     volumes:
-      - .:/usr/src/app              # Monta el código fuente en el contenedor
+      - .:/usr/src/app
     ports:
-      - "3001:3000"                 # Puerto expuesto para acceder a la aplicación Rails desde el host
+      - "3002:3000"                 # Cambié el puerto para evitar conflictos
     depends_on:
-      - db                          # Asegura que PostgreSQL esté listo antes de iniciar Rails
+      - db_multitenant
     environment:
-      DATABASE_HOST: db             # Nombre del servicio de PostgreSQL en la red de Docker
-      DATABASE_USERNAME: cristian    # Usuario de PostgreSQL
-      DATABASE_PASSWORD: cristian    # Contraseña de PostgreSQL
-      DATABASE_NAME: compufiis_development # Nombre de la base de datos
+      DATABASE_HOST: db_multitenant
+      DATABASE_USERNAME: cristian
+      DATABASE_PASSWORD: cristian
+      DATABASE_NAME: multitenant_development
     networks:
-      - app-network                 # Red compartida con el servicio de PostgreSQL
+      - multitenant-network
 
-# Volúmenes para almacenamiento de datos persistentes
+# Volumen para persistencia de datos
 volumes:
-  pgdata:
+  pgdata_multitenant:
 
-# Red compartida entre servicios para que se puedan comunicar entre sí
+# Red compartida para los servicios
 networks:
-  app-network:
+  multitenant-network:
