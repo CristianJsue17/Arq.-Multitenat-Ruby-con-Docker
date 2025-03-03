@@ -1,5 +1,5 @@
 class ProductsUploadController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_product, only: [:edit, :update, :destroy, :show]
 
   # Acción para crear un nuevo producto
@@ -74,7 +74,7 @@ def update
 end
 
 
-  # Acción para eliminar un producto
+ # Acción para eliminar un producto
 def destroy
   @product = Product.for_current_tenant.find_by(id: params[:id]) # Filtra por tenant actual
   if @product.nil?
@@ -82,13 +82,23 @@ def destroy
     return
   end
 
-  @product.image.purge if @product.image.attached? # Elimina la imagen adjunta, si existe
+  # Elimina todas las referencias al producto en cart_items
+  CartItem.where(product_id: @product.id).destroy_all
+
+  # Elimina todas las referencias al producto en order_details
+  OrderDetail.where(product_id: @product.id).destroy_all
+
+  # Elimina la imagen adjunta, si existe
+  @product.image.purge if @product.image.attached?
+
+  # Intenta eliminar el producto
   if @product.destroy
     redirect_to new_products_upload_path, notice: 'Producto eliminado exitosamente.'
   else
     redirect_to new_products_upload_path, alert: 'No se pudo eliminar el producto.'
   end
 end
+
 
 
   # Acción para mostrar los detalles de un producto

@@ -40,6 +40,4 @@ Rails.application.routes.draw do
   get "category/escritorios", to: "products#escritorios", as: :muebles
   get "category/sillas", to: "products#sillas", as: :sillas
   get "category/armarios", to: "products#armarios", as: :armarios
-
-
 end

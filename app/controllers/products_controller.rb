@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     end
   end
   
-
+  #para compufiis
   def laptops
     @products = Product.for_current_tenant.where(category: 'laptops')
     render :category_compufiis   #renderiza la vista de compufiis

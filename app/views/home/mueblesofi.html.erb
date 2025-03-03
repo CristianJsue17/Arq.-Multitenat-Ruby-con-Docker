@@ -78,7 +78,12 @@
         <% end %>
         <p>Precio: <%= @random_laptops[0]&.price || "N/A" %></p>
         <p>Marca: <%= @random_laptops[0]&.brand || "Marca" %></p>
-        <%= link_to 'Ver detalles', product_path(@random_laptops[0]), class: 'details-link' %>
+        <% if @random_laptops[0].present? && @random_laptops[0].id.present? %>
+          <%= link_to 'Ver detalles', product_path(@random_laptops[0]), class: 'details-link' %>
+        <% else %>
+          <p>Detalles no disponibles</p>
+        <% end %>
+
       </div>
 
       <!-- Tarjeta de Producto: Armario -->
@@ -91,7 +96,11 @@
         <% end %>
         <p>Precio: <%= @random_cellphones[0]&.price || "N/A" %></p>
         <p>Marca: <%= @random_cellphones[0]&.brand || "Marca" %></p>
-        <%= link_to 'Ver detalles', product_path(@random_cellphones[0]), class: 'details-link' %>
+        <% if @random_cellphones[0].present? && @random_cellphones[0].id.present? %>
+          <%= link_to 'Ver detalles', product_path(@random_cellphones[0]), class: 'details-link' %>
+        <% else %>
+          <p>Detalles no disponibles</p>
+        <% end %>
       </div>
     </div>
   </div>
